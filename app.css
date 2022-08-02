@@ -1,0 +1,9 @@
+*{
+  text-align: center;
+}
+
+#clock-face {
+  font-size: 10em;
+  margin-left: auto;
+  margin-right: auto;
+}
