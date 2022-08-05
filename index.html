@@ -9,32 +9,102 @@
     <script src="app.js"></script>
     <div>
       <span>
-    <h1 id="main-header">clocks : web : app </h1>
+    <h1>
+      <span id="main-header"> clocks </span>
+      <span id="sub-header"> an assortment of ways to view the time </span>
+    </h1>
     </span>
+    <span>
+  </span>
     </div>
     <div id="clock-div">
-      <span>
-      <label for="clock-select">Select time:</label>
+      <span id="select-span">
+        <form>
+          <label class="form-control">
+            <input type="radio" id="base10-rad" name="radiosel" value="base10"
+                             checked> base10
+                           </label>
+                           <label class="form-control">
+                             <input type="radio" id="binary-rad" name="radiosel" value="binary">binary
+                           </label>
+                           <label class="form-control">
+                        <input type="radio" id="ternary-rad" name="radiosel" value="ternary">ternary
+                      </label>
+        </form>
 
-<select name="clock-select" id="sel-clocks">
-    <option value="ternary">Ternary</option>
-    <option value="binary">Binary</option>
-    <option value="base10">Base10</option>
-</select>
+<!-- <select name="clock-select" id="clock-select" >
+  <optgroup>
+    <option value="base10">base10</option>
+    <option value="binary">binary</option>
+    <option value="ternary">ternary</option>
+  </optgroup>
+</select> -->
+
 </span>
-      </div>
-    <div>
+    <div id="base10-div">
       <span>
-      <table id="clock-face">
+      <table id="base10-clock-face">
         <tr>
-          <td id="clock-hours">202</td>
+          <td class="clock-cell" id="clock-hours-0">0</td>
+          <td class="clock-cell" id="clock-hours-1">0</td>
           <td>:</td>
-          <td id="clock-minutes">0020</td>
+          <td class="clock-cell" id="clock-minutes-0">0</td>
+          <td class="clock-cell" id="clock-minutes-1">0</td>
           <td>:</td>
-          <td id="clock-seconds">1120</td>
+          <td class="clock-cell" id="clock-seconds-0">0</td>
+          <td class="clock-cell" id="clock-seconds-1">0</td>
           </tr>
         </table>
         </span>
+    </div>
+    <div id="binary-div">
+      <span>
+      <table id="binary-clock-face">
+        <tr>
+          <td class="clock-cell" id="binary-clock-hours-0"></td>
+          <td class="clock-cell" id="binary-clock-hours-1"></td>
+          <td class="clock-cell" id="binary-clock-hours-2"></td>
+          <td class="clock-cell" id="binary-clock-hours-3"></td>
+          <td class="clock-cell" id="binary-clock-hours-4"></td>
+          <td>:</td>
+          <td class="clock-cell" id="binary-clock-minutes-0"></td>
+          <td class="clock-cell" id="binary-clock-minutes-1"></td>
+          <td class="clock-cell" id="binary-clock-minutes-2"></td>
+          <td class="clock-cell" id="binary-clock-minutes-3"></td>
+          <td class="clock-cell" id="binary-clock-minutes-4"></td>
+          <td class="clock-cell" id="binary-clock-minutes-5"></td>
+          <td>:</td>
+          <td class="clock-cell" id="binary-clock-seconds-0"></td>
+          <td class="clock-cell" id="binary-clock-seconds-1"></td>
+          <td class="clock-cell" id="binary-clock-seconds-2"></td>
+          <td class="clock-cell" id="binary-clock-seconds-3"></td>
+          <td class="clock-cell" id="binary-clock-seconds-4"></td>
+          <td class="clock-cell" id="binary-clock-seconds-5"></td>
+          </tr>
+        </table>
+        </span>
+    </div>
+    <div id="ternary-div">
+      <span>
+      <table id="ternary-clock-face">
+        <tr>
+          <td class="clock-cell" id="ternary-clock-hours-0"></td>
+          <td class="clock-cell" id="ternary-clock-hours-1"></td>
+          <td class="clock-cell" id="ternary-clock-hours-2"></td>
+          <td>:</td>
+          <td class="clock-cell" id="ternary-clock-minutes-0"></td>
+          <td class="clock-cell" id="ternary-clock-minutes-1"></td>
+          <td class="clock-cell" id="ternary-clock-minutes-2"></td>
+          <td class="clock-cell" id="ternary-clock-minutes-3"></td>
+          <td>:</td>
+          <td class="clock-cell" id="ternary-clock-seconds-0"></td>
+          <td class="clock-cell" id="ternary-clock-seconds-1"></td>
+          <td class="clock-cell" id="ternary-clock-seconds-2"></td>
+          <td class="clock-cell" id="ternary-clock-seconds-3"></td>
+          </tr>
+        </table>
+        </span>
+    </div>
     </div>
   </body>
 </html>

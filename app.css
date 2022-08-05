@@ -1,9 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@300&display=swap');
 *{
   text-align: center;
+  font-family: 'Azeret Mono', monospace;
+}
+:root {
+  --form-control-color: black;
 }
 
-#clock-face {
-  font-size: 10em;
+body{
+  background-image: linear-gradient( 95.2deg, rgba(173,252,234,1), rgba(192,229,246,1));
+  color: black;
+  height: 100vh;
+  padding: 1px;
+  position: relative;
+}
+#main-header{
+  left: 50%;
+  display: block;
+  font-size: 2em;
+}
+#sub-header{
+  font-size: .5em;
+  margin-top: 2px;
+  color: gray;
+  display: block;
+}
+
+#select-span-label{
+  margin-bottom: 4px;
+}
+
+#radios{
+  border: none;
+}
+
+optgroup{
+  font-size: 4em;
+}
+
+.form-control{
+  font-size: 1.3em;
+}
+
+#clock-div{
+  border-bottom: 1px solid white;
+  border-left: .5px solid white;
+  border-right: .5px solid white;
+  border-radius: 5%;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(to top, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0));
+  height: 50vh;
+  width: 75vw;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#clock-select{
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
+  border-right: none;
+  background-color: rgba(255,255,255, .4)
+}
+
+.clock-cell {
+  background-image: linear-gradient( 95.2deg, rgba(173,252,234,.15) 26.8%, rgba(192,229,246,.15) 64% );
+  background-repeat: no-repeat;
+  backdrop-filter: blur(1px);
+  box-shadow: .5px .5px black;
+}
+
+.nothing {
+  box-shadow: 1px 1px 2px 1px white inset;
+  background: rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid white;
+}
+
+#base10-clock-face {
+  font-size: 3.8em;
   margin-left: auto;
   margin-right: auto;
+  color: white;
+  text-shadow: 1px 1px black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#binary-clock-face {
+  font-size: 3.8em;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#ternary-clock-face {
+  font-size: 3.8em;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
