@@ -1,19 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@300&display=swap');
-*{
-  text-align: center;
-  font-family: 'Azeret Mono', monospace;
-}
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Playfair+Display:wght@400;600&family=Recursive:wght@300;400;500&display=swap');
+
 :root {
   --form-control-color: black;
 }
 
 body{
-  background-image: linear-gradient( 95.2deg, rgba(173,252,234,1), rgba(192,229,246,1));
-  color: black;
   height: 100vh;
-  padding: 1px;
-  position: relative;
+  /* position: relative; */
 }
 #main-header{
   left: 50%;
@@ -56,6 +51,7 @@ optgroup{
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  display: none;
 }
 
 #clock-select{
@@ -67,10 +63,10 @@ optgroup{
 }
 
 .clock-cell {
-  background-image: linear-gradient( 95.2deg, rgba(173,252,234,.15) 26.8%, rgba(192,229,246,.15) 64% );
+  /* background-image: linear-gradient( 95.2deg, rgba(173,252,234,.15) 26.8%, rgba(192,229,246,.15) 64% );
   background-repeat: no-repeat;
   backdrop-filter: blur(1px);
-  box-shadow: .5px .5px black;
+  box-shadow: .5px .5px black; */
 }
 
 .nothing {
@@ -80,7 +76,7 @@ optgroup{
 }
 
 #base10-clock-face {
-  font-size: 3.8em;
+  /* font-size: 3.8em;
   margin-left: auto;
   margin-right: auto;
   color: white;
@@ -88,7 +84,7 @@ optgroup{
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 
 #binary-clock-face {
@@ -96,7 +92,7 @@ optgroup{
   margin-left: auto;
   margin-right: auto;
   color: white;
-  position: absolute;
+  /* position: absolute; */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -107,7 +103,7 @@ optgroup{
   margin-left: auto;
   margin-right: auto;
   color: white;
-  position: absolute;
+  /* position: absolute; */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

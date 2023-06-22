@@ -1,110 +1,197 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="app.css">
-    <title>clocks:web:app</title>
-  </head>
-  <body>
-    <script src="app.js"></script>
-    <div>
-      <span>
-    <h1>
-      <span id="main-header"> clocks </span>
-      <span id="sub-header"> an assortment of ways to view the time </span>
-    </h1>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Playfair+Display:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>clocks</title>
+</head>
+
+<body>
+  <script src="app.js"></script>
+  <div class="clocks-app w-full h-full">
+    <div class="w-full top-0 main-nav bg-[#1E222C] shadow-gray shadow-lg h-12 items-center">
+      <div class="flex flex-row justify-between mx-2 sm:mx-4 items-center self-center pt-2">
+        <div class="font-bold text-md text-[#87463F]">clocks:web:app</div>
+        <ul class="flex flex-row space-x-2 sm:space-x-6 text-xl items-center text-[#87463F]">
+          <li>About</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-center w-full h-48 bg-[#918D89]
+    text-center 
+    font-normal 
+    hero
+    bg-cover">
+      <h1 class="text-[#87463F]  text-5xl justify-center pt-4 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">cl:0x</h1>
+      <h2 class=" text-[#1E222C] py-6">An assortment of ways to view the <span class="font-semibold">time</span>.</h2>
+
+    </div>
+    <div
+      class="clock-select text-[#EBF0F1] text-center w-full h-full bg-cover bg-[linear-gradient(to_right,rgba(0,0,0,1),rgba(30,34,44,.65)),url('https://images.unsplash.com/photo-1633451238208-11c8e6c1fed4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80')]">
+      <div class="container max-w-[960px] h-full bg-[#1E222C]/50 flex flex-col justify-center m-auto py-4">
+
+        <select class="w-[50%] mx-auto border-b-[1px] text-xl text-[#EBF0F1] bg-[#000]/0" x-model="clocks">
+          <!-- https://alpinejs.dev/directives/model#single-select -->
+          <option>base10</option>
+          <option>binary</option>
+          <option>ternary</option>
+        </select>
+
+        <span x-text="clocks"></span>
+
+        <div class="clock-faces text-[#ff0000] pt-8 mx-auto">
+          <div id="base10" class="text-8xl">
+            <span>
+              <table id="base10-clock-face">
+                <tr>
+                  <td class="clock-cell" id="clock-hours-0">0</td>
+                  <td class="clock-cell" id="clock-hours-1">0</td>
+                  <td>:</td>
+                  <td class="clock-cell" id="clock-minutes-0">0</td>
+                  <td class="clock-cell" id="clock-minutes-1">0</td>
+                  <td>:</td>
+                  <td class="clock-cell" id="clock-seconds-0">0</td>
+                  <td class="clock-cell" id="clock-seconds-1">0</td>
+                </tr>
+              </table>
+            </span>
+          </div>
+      
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- <div>
+
+    <span>
+      <h1>
+        <span id="main-header"> clocks </span>
+        <span id="sub-header"> an assortment of ways to view the time </span>
+      </h1>
     </span>
     <span>
-  </span>
-    </div>
-    <div id="clock-div">
-      <span id="select-span">
-        <form>
-          <label class="form-control">
-            <input type="radio" id="base10-rad" name="radiosel" value="base10"
-                             checked> base10
-                           </label>
-                           <label class="form-control">
-                             <input type="radio" id="binary-rad" name="radiosel" value="binary">binary
-                           </label>
-                           <label class="form-control">
-                        <input type="radio" id="ternary-rad" name="radiosel" value="ternary">ternary
-                      </label>
-        </form>
+    </span>
+  </div> -->
 
-<!-- <select name="clock-select" id="clock-select" >
-  <optgroup>
-    <option value="base10">base10</option>
-    <option value="binary">binary</option>
-    <option value="ternary">ternary</option>
-  </optgroup>
-</select> -->
+  
 
-</span>
+
+  <div id="clock-div">
+    <span id="select-span">
+      <form>
+        <label class="form-control">
+          <input type="radio" id="base10-rad" name="radiosel" value="base10" checked> base10
+        </label>
+        <label class="form-control">
+          <input type="radio" id="binary-rad" name="radiosel" value="binary">binary
+        </label>
+        <label class="form-control">
+          <input type="radio" id="ternary-rad" name="radiosel" value="ternary">ternary
+        </label>
+      </form>
+    </span>
     <div id="base10-div">
       <span>
-      <table id="base10-clock-face">
-        <tr>
-          <td class="clock-cell" id="clock-hours-0">0</td>
-          <td class="clock-cell" id="clock-hours-1">0</td>
-          <td>:</td>
-          <td class="clock-cell" id="clock-minutes-0">0</td>
-          <td class="clock-cell" id="clock-minutes-1">0</td>
-          <td>:</td>
-          <td class="clock-cell" id="clock-seconds-0">0</td>
-          <td class="clock-cell" id="clock-seconds-1">0</td>
+        <table id="base10-clock-face">
+          <tr>
+            <td class="clock-cell" id="clock-hours-0">0</td>
+            <td class="clock-cell" id="clock-hours-1">0</td>
+            <td>:</td>
+            <td class="clock-cell" id="clock-minutes-0">0</td>
+            <td class="clock-cell" id="clock-minutes-1">0</td>
+            <td>:</td>
+            <td class="clock-cell" id="clock-seconds-0">0</td>
+            <td class="clock-cell" id="clock-seconds-1">0</td>
           </tr>
         </table>
-        </span>
+      </span>
     </div>
     <div id="binary-div">
       <span>
-      <table id="binary-clock-face">
-        <tr>
-          <td class="clock-cell" id="binary-clock-hours-0"></td>
-          <td class="clock-cell" id="binary-clock-hours-1"></td>
-          <td class="clock-cell" id="binary-clock-hours-2"></td>
-          <td class="clock-cell" id="binary-clock-hours-3"></td>
-          <td class="clock-cell" id="binary-clock-hours-4"></td>
-          <td>:</td>
-          <td class="clock-cell" id="binary-clock-minutes-0"></td>
-          <td class="clock-cell" id="binary-clock-minutes-1"></td>
-          <td class="clock-cell" id="binary-clock-minutes-2"></td>
-          <td class="clock-cell" id="binary-clock-minutes-3"></td>
-          <td class="clock-cell" id="binary-clock-minutes-4"></td>
-          <td class="clock-cell" id="binary-clock-minutes-5"></td>
-          <td>:</td>
-          <td class="clock-cell" id="binary-clock-seconds-0"></td>
-          <td class="clock-cell" id="binary-clock-seconds-1"></td>
-          <td class="clock-cell" id="binary-clock-seconds-2"></td>
-          <td class="clock-cell" id="binary-clock-seconds-3"></td>
-          <td class="clock-cell" id="binary-clock-seconds-4"></td>
-          <td class="clock-cell" id="binary-clock-seconds-5"></td>
+        <table id="binary-clock-face">
+          <tr>
+            <td class="clock-cell" id="binary-clock-hours-0"></td>
+            <td class="clock-cell" id="binary-clock-hours-1"></td>
+            <td class="clock-cell" id="binary-clock-hours-2"></td>
+            <td class="clock-cell" id="binary-clock-hours-3"></td>
+            <td class="clock-cell" id="binary-clock-hours-4"></td>
+            <td>:</td>
+            <td class="clock-cell" id="binary-clock-minutes-0"></td>
+            <td class="clock-cell" id="binary-clock-minutes-1"></td>
+            <td class="clock-cell" id="binary-clock-minutes-2"></td>
+            <td class="clock-cell" id="binary-clock-minutes-3"></td>
+            <td class="clock-cell" id="binary-clock-minutes-4"></td>
+            <td class="clock-cell" id="binary-clock-minutes-5"></td>
+            <td>:</td>
+            <td class="clock-cell" id="binary-clock-seconds-0"></td>
+            <td class="clock-cell" id="binary-clock-seconds-1"></td>
+            <td class="clock-cell" id="binary-clock-seconds-2"></td>
+            <td class="clock-cell" id="binary-clock-seconds-3"></td>
+            <td class="clock-cell" id="binary-clock-seconds-4"></td>
+            <td class="clock-cell" id="binary-clock-seconds-5"></td>
           </tr>
         </table>
-        </span>
+      </span>
     </div>
     <div id="ternary-div">
       <span>
-      <table id="ternary-clock-face">
-        <tr>
-          <td class="clock-cell" id="ternary-clock-hours-0"></td>
-          <td class="clock-cell" id="ternary-clock-hours-1"></td>
-          <td class="clock-cell" id="ternary-clock-hours-2"></td>
-          <td>:</td>
-          <td class="clock-cell" id="ternary-clock-minutes-0"></td>
-          <td class="clock-cell" id="ternary-clock-minutes-1"></td>
-          <td class="clock-cell" id="ternary-clock-minutes-2"></td>
-          <td class="clock-cell" id="ternary-clock-minutes-3"></td>
-          <td>:</td>
-          <td class="clock-cell" id="ternary-clock-seconds-0"></td>
-          <td class="clock-cell" id="ternary-clock-seconds-1"></td>
-          <td class="clock-cell" id="ternary-clock-seconds-2"></td>
-          <td class="clock-cell" id="ternary-clock-seconds-3"></td>
+        <table id="ternary-clock-face">
+          <tr>
+            <td class="clock-cell" id="ternary-clock-hours-0"></td>
+            <td class="clock-cell" id="ternary-clock-hours-1"></td>
+            <td class="clock-cell" id="ternary-clock-hours-2"></td>
+            <td>:</td>
+            <td class="clock-cell" id="ternary-clock-minutes-0"></td>
+            <td class="clock-cell" id="ternary-clock-minutes-1"></td>
+            <td class="clock-cell" id="ternary-clock-minutes-2"></td>
+            <td class="clock-cell" id="ternary-clock-minutes-3"></td>
+            <td>:</td>
+            <td class="clock-cell" id="ternary-clock-seconds-0"></td>
+            <td class="clock-cell" id="ternary-clock-seconds-1"></td>
+            <td class="clock-cell" id="ternary-clock-seconds-2"></td>
+            <td class="clock-cell" id="ternary-clock-seconds-3"></td>
           </tr>
         </table>
-        </span>
+      </span>
     </div>
-    </div>
-  </body>
+  </div>
+</body>
+
+<style>
+  .clocks-app {
+    font-family: 'Major Mono Display', monospace;
+  }
+
+  .main-nav ul li {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .hero h1 {
+    font-family: 'Major Mono Display', monospace;
+  }
+
+  .hero h2 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .clock-select {
+    font-family: 'Playfair Display', serif;
+  }
+  .clock-faces {
+    font-family: 'Major Mono Display', monospace;
+  }
+</style>
+
 </html>
