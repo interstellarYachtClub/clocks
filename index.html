@@ -17,14 +17,30 @@
 
 <body>
   <script src="app.js"></script>
-  <div class="clocks-app w-100vw h-full">
-    <div class="w-full top-0 main-nav bg-[#1E222C] shadow-gray shadow-lg h-12 items-center">
+  <div class="clocks-app w-full h-full" x-data="{ isOpen: false }">
+
+
+    <div class="w-full top-0 main-nav bg-[#1E222C] shadow-gray shadow-lg h-12 items-center sticky top-0">
       <div class="flex flex-row justify-between mx-2 sm:mx-4 items-center self-center pt-2">
         <div class="font-bold text-md text-[#87463F]">clock:web:app</div>
         <ul class="flex flex-row space-x-2 sm:space-x-6 text-xl items-center text-[#87463F]">
-          <li>About</li>
+          <li class="hover:text-[#918D89] hover:cursor-pointer p-1" @click="isOpen = !isOpen">About</li>
         </ul>
       </div>
+    </div>
+    <div class="aboutbar absolute top-0 left-0" :class="{ 'closed hidden': !isOpen }">
+      <p class="text-[#EBF0F1] text-lg">
+        I made this app as a way to better learn tailwind and css.
+        This page also uses alpineJS. For the select component and this sidebar.
+      </p>
+      <p class="text-[#EBF0F1] text-lg">
+        The main challenge I encountered was how to best display the clock for various formats. Inspired by the android clock on the pixel homescreen,
+        I found it best to combine flex and grid to stack when on narrow or mobile screens and then unstack to rows when on desktop.
+      </p>
+      <p class="text-[#EBF0F1] text-lg">To get the time, I used the built in JS Date() method and then extracted the hours, minutes, and seconds using .split.</p>
+      <p class="text-[#EBF0F1] text-lg">
+        After getting the hours, I formatted them to binary and ternary using basic ifelse loops to match values from greatest to least units positions. I found it easiest, although crude, to perform long division to get the binary and ternary values.
+      </p>
     </div>
 
     <div class="flex flex-col justify-center w-full h-48 bg-[#918D89]
@@ -38,7 +54,7 @@
     </div>
     <div
       class="clock-select text-[#EBF0F1] text-center w-full h-full bg-cover bg-[linear-gradient(to_right,rgba(0,0,0,1),rgba(30,34,44,.65)),url('https://images.unsplash.com/photo-1633451238208-11c8e6c1fed4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80')]">
-      <div class="container max-w-[960px] h-full bg-[#1E222C]/50 flex flex-col m-auto py-4">
+      <div class="container max-w-[960px] h-full bg-[#1E222C]/50 flex flex-col m-auto py-24">
 
         <div x-data="{ selectedClock: 'base10' }">
           <select class="w-[50%] mx-auto border-b-[1px] text-xl text-[#EBF0F1] bg-[#000]/0" x-model="selectedClock">
@@ -50,7 +66,7 @@
 
           <span x-text="clocks"></span>
 
-          <div class="clock-faces pt-8 mx-auto">
+          <div class="clock-faces pt-20 mx-auto">
             <!-- all the clocks -->
 
             <!--  Base 10 -->
@@ -74,7 +90,7 @@
                     </div>
                   </div>
                   <div class="flex flex-row justify-center">
-                    <div class="grid grid-cols-3">
+                    <div class="grid grid-cols-3 lg:grid-cols-2">
                       <div class="clock-cell" id="clock-seconds-0">0</div>
                       <div class="clock-cell" id="clock-seconds-1">0</div>
                       <div class="seconds-label text-3xl self-end lg:hidden">s</div>
@@ -89,8 +105,8 @@
               <div class="clock-face" id="binary-clock-face">
                 <div class="flex flex-col lg:flex-row justify-center">
                   <div class="flex flex-row justify-center">
-                    <div class="grid grid-cols-7">
-                      <div></div>
+                    <div class="grid grid-cols-7 lg:grid-cols-6">
+                      <div class="lg:hidden"></div>
                       <div class="clock-cell" id="binary-clock-hours-0"></div>
                       <div class="clock-cell" id="binary-clock-hours-1"></div>
                       <div class="clock-cell" id="binary-clock-hours-2"></div>
@@ -113,7 +129,7 @@
                     </div>
                   </div>
                   <div class="flex flex-row justify-center">
-                    <div class="grid grid-cols-7">
+                    <div class="grid grid-cols-7 lg:grid-cols-6">
                       <div class="clock-cell" id="binary-clock-seconds-0"></div>
                       <div class="clock-cell" id="binary-clock-seconds-1"></div>
                       <div class="clock-cell" id="binary-clock-seconds-2"></div>
@@ -132,8 +148,8 @@
               <div class="clock-face" id="ternary-clock-face">
                 <div class="flex flex-col lg:flex-row justify-center">
                   <div class="flex flex-row justify-center">
-                    <div class="grid grid-cols-5">
-                      <div></div>
+                    <div class="grid grid-cols-5 lg:grid-cols-4">
+                      <div class="lg:hidden"></div>
                       <div class="clock-cell" id="ternary-clock-hours-0"></div>
                       <div class="clock-cell" id="ternary-clock-hours-1"></div>
                       <div class="clock-cell" id="ternary-clock-hours-2"></div>
@@ -152,7 +168,7 @@
                     </div>
                   </div>
                   <div class="flex flex-row justify-center">
-                    <div class="grid grid-cols-5">
+                    <div class="grid grid-cols-5 lg:grid-cols-4">
                       <div class="clock-cell" id="ternary-clock-seconds-0"></div>
                       <div class="clock-cell" id="ternary-clock-seconds-1"></div>
                       <div class="clock-cell" id="ternary-clock-seconds-2"></div>
@@ -168,7 +184,11 @@
       </div>
     </div>
 
+    <footer class="w-full bg-[#1E222C] h-10 sticky bottom-0 flex justify-center items-center">
+      <p class="text-center text-[#918D89]"> Made with 🕑 and love by <a class="no-underline font-semibold"
+          href="https://github.com/interstellaryachtclub">Dave @ IYC</a> </p>
 
+    </footer>
 </body>
 
 <style>
@@ -198,6 +218,27 @@
 
   .clock-face {
     color: #ff0000;
+  }
+
+  footer p {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .aboutbar {
+    width: 80vw;
+    height: 100vh;
+    background-color: rgba(30, 34, 44, .90);
+    padding: 2rem;
+    transition: transform 0.5s ease-in-out;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .aboutbar p {
+    padding-bottom: 1.5rem;
+  }
+
+  .aboutbar.closed {
+    transform: translateX(-80vw);
   }
 </style>
 
