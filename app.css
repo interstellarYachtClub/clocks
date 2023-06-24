@@ -88,23 +88,32 @@ optgroup{
 }
 
 #binary-clock-face {
+  /*
   font-size: 3.8em;
   margin-left: auto;
   margin-right: auto;
   color: white;
-  /* position: absolute; */
+  position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  */
 }
 
 #ternary-clock-face {
+  /*
   font-size: 3.8em;
   margin-left: auto;
   margin-right: auto;
   color: white;
-  /* position: absolute; */
+  position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  */
+}
+
+.clock-faces table{
+  margin-left: auto;
+  margin-right: auto;
 }

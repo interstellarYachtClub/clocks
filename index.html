@@ -17,10 +17,10 @@
 
 <body>
   <script src="app.js"></script>
-  <div class="clocks-app w-full h-full">
+  <div class="clocks-app w-100vw h-full">
     <div class="w-full top-0 main-nav bg-[#1E222C] shadow-gray shadow-lg h-12 items-center">
       <div class="flex flex-row justify-between mx-2 sm:mx-4 items-center self-center pt-2">
-        <div class="font-bold text-md text-[#87463F]">clocks:web:app</div>
+        <div class="font-bold text-md text-[#87463F]">clock:web:app</div>
         <ul class="flex flex-row space-x-2 sm:space-x-6 text-xl items-center text-[#87463F]">
           <li>About</li>
         </ul>
@@ -32,141 +32,143 @@
     font-normal 
     hero
     bg-cover">
-      <h1 class="text-[#87463F]  text-5xl justify-center pt-4 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">cl:0x</h1>
+      <h1 class="text-[#87463F]  text-5xl justify-center pt-4 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">clocks</h1>
       <h2 class=" text-[#1E222C] py-6">An assortment of ways to view the <span class="font-semibold">time</span>.</h2>
 
     </div>
     <div
       class="clock-select text-[#EBF0F1] text-center w-full h-full bg-cover bg-[linear-gradient(to_right,rgba(0,0,0,1),rgba(30,34,44,.65)),url('https://images.unsplash.com/photo-1633451238208-11c8e6c1fed4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80')]">
-      <div class="container max-w-[960px] h-full bg-[#1E222C]/50 flex flex-col justify-center m-auto py-4">
+      <div class="container max-w-[960px] h-full bg-[#1E222C]/50 flex flex-col m-auto py-4">
 
-        <select class="w-[50%] mx-auto border-b-[1px] text-xl text-[#EBF0F1] bg-[#000]/0" x-model="clocks">
-          <!-- https://alpinejs.dev/directives/model#single-select -->
-          <option>base10</option>
-          <option>binary</option>
-          <option>ternary</option>
-        </select>
+        <div x-data="{ selectedClock: 'base10' }">
+          <select class="w-[50%] mx-auto border-b-[1px] text-xl text-[#EBF0F1] bg-[#000]/0" x-model="selectedClock">
+            <!-- https://alpinejs.dev/directives/model#single-select -->
+            <option value="base10">base10</option>
+            <option value="binary">binary</option>
+            <option value="ternary">ternary</option>
+          </select>
 
-        <span x-text="clocks"></span>
+          <span x-text="clocks"></span>
 
-        <div class="clock-faces text-[#ff0000] pt-8 mx-auto">
-          <div id="base10" class="text-8xl">
-            <span>
-              <table id="base10-clock-face">
-                <tr>
-                  <td class="clock-cell" id="clock-hours-0">0</td>
-                  <td class="clock-cell" id="clock-hours-1">0</td>
-                  <td>:</td>
-                  <td class="clock-cell" id="clock-minutes-0">0</td>
-                  <td class="clock-cell" id="clock-minutes-1">0</td>
-                  <td>:</td>
-                  <td class="clock-cell" id="clock-seconds-0">0</td>
-                  <td class="clock-cell" id="clock-seconds-1">0</td>
-                </tr>
-              </table>
-            </span>
+          <div class="clock-faces pt-8 mx-auto">
+            <!-- all the clocks -->
+
+            <!--  Base 10 -->
+            <div id="base10" class="text-8xl" x-show="selectedClock === 'base10' ">
+              <div class="clock-face" id="base10-clock-face">
+                <div class="flex flex-col lg:flex-row justify-center">
+                  <div class="flex flex-row justify-center">
+                    <div class="grid grid-cols-3">
+                      <div class="clock-cell" id="clock-hours-0">0</div>
+                      <div class="clock-cell" id="clock-hours-1">0</div>
+                      <div class="hours-label text-3xl self-end lg:hidden">h</div>
+                      <div class="hidden lg:block">:</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-row justify-center">
+                    <div class="grid grid-cols-3">
+                      <div class="clock-cell" id="clock-minutes-0">0</div>
+                      <div class="clock-cell" id="clock-minutes-1">0</div>
+                      <div class="minutes-label text-3xl self-end lg:hidden">m</div>
+                      <div class="hidden lg:block">:</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-row justify-center">
+                    <div class="grid grid-cols-3">
+                      <div class="clock-cell" id="clock-seconds-0">0</div>
+                      <div class="clock-cell" id="clock-seconds-1">0</div>
+                      <div class="seconds-label text-3xl self-end lg:hidden">s</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Base 2 -->
+            <div id="binary-div" class="text-7xl sm:text-8xl lg:text-6xl" x-show="selectedClock === 'binary' ">
+              <div class="clock-face" id="binary-clock-face">
+                <div class="flex flex-col lg:flex-row justify-center">
+                  <div class="flex flex-row justify-center">
+                    <div class="grid grid-cols-7">
+                      <div></div>
+                      <div class="clock-cell" id="binary-clock-hours-0"></div>
+                      <div class="clock-cell" id="binary-clock-hours-1"></div>
+                      <div class="clock-cell" id="binary-clock-hours-2"></div>
+                      <div class="clock-cell" id="binary-clock-hours-3"></div>
+                      <div class="clock-cell" id="binary-clock-hours-4"></div>
+                      <div class="hours-label text-3xl self-end lg:hidden text-left">h</div>
+                      <div class="hidden lg:block">:</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-row justify-center">
+                    <div class="grid grid-cols-7">
+                      <div class="clock-cell" id="binary-clock-minutes-0"></div>
+                      <div class="clock-cell" id="binary-clock-minutes-1"></div>
+                      <div class="clock-cell" id="binary-clock-minutes-2"></div>
+                      <div class="clock-cell" id="binary-clock-minutes-3"></div>
+                      <div class="clock-cell" id="binary-clock-minutes-4"></div>
+                      <div class="clock-cell" id="binary-clock-minutes-5"></div>
+                      <div class="hours-label text-3xl self-end lg:hidden text-left">m</div>
+                      <div class="hidden lg:block">:</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-row justify-center">
+                    <div class="grid grid-cols-7">
+                      <div class="clock-cell" id="binary-clock-seconds-0"></div>
+                      <div class="clock-cell" id="binary-clock-seconds-1"></div>
+                      <div class="clock-cell" id="binary-clock-seconds-2"></div>
+                      <div class="clock-cell" id="binary-clock-seconds-3"></div>
+                      <div class="clock-cell" id="binary-clock-seconds-4"></div>
+                      <div class="clock-cell" id="binary-clock-seconds-5"></div>
+                      <div class="hours-label text-3xl self-end lg:hidden text-left">s</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Base 3 -->
+            <div id="ternary-div" class="text-8xl" x-show="selectedClock === 'ternary' ">
+              <div class="clock-face" id="ternary-clock-face">
+                <div class="flex flex-col lg:flex-row justify-center">
+                  <div class="flex flex-row justify-center">
+                    <div class="grid grid-cols-5">
+                      <div></div>
+                      <div class="clock-cell" id="ternary-clock-hours-0"></div>
+                      <div class="clock-cell" id="ternary-clock-hours-1"></div>
+                      <div class="clock-cell" id="ternary-clock-hours-2"></div>
+                      <div class="hours-label text-3xl self-end lg:hidden text-left">h</div>
+                      <div class="hidden lg:block">:</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-row justify-center">
+                    <div class="grid grid-cols-5">
+                      <div class="clock-cell" id="ternary-clock-minutes-0"></div>
+                      <div class="clock-cell" id="ternary-clock-minutes-1"></div>
+                      <div class="clock-cell" id="ternary-clock-minutes-2"></div>
+                      <div class="clock-cell" id="ternary-clock-minutes-3"></div>
+                      <div class="hours-label text-3xl self-end lg:hidden text-left">m</div>
+                      <div class="hidden lg:block">:</div>
+                    </div>
+                  </div>
+                  <div class="flex flex-row justify-center">
+                    <div class="grid grid-cols-5">
+                      <div class="clock-cell" id="ternary-clock-seconds-0"></div>
+                      <div class="clock-cell" id="ternary-clock-seconds-1"></div>
+                      <div class="clock-cell" id="ternary-clock-seconds-2"></div>
+                      <div class="clock-cell" id="ternary-clock-seconds-3"></div>
+                      <div class="hours-label text-3xl self-end lg:hidden text-left">m</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-      
         </div>
       </div>
-
     </div>
-  </div>
-
-  <!-- <div>
-
-    <span>
-      <h1>
-        <span id="main-header"> clocks </span>
-        <span id="sub-header"> an assortment of ways to view the time </span>
-      </h1>
-    </span>
-    <span>
-    </span>
-  </div> -->
-
-  
 
 
-  <div id="clock-div">
-    <span id="select-span">
-      <form>
-        <label class="form-control">
-          <input type="radio" id="base10-rad" name="radiosel" value="base10" checked> base10
-        </label>
-        <label class="form-control">
-          <input type="radio" id="binary-rad" name="radiosel" value="binary">binary
-        </label>
-        <label class="form-control">
-          <input type="radio" id="ternary-rad" name="radiosel" value="ternary">ternary
-        </label>
-      </form>
-    </span>
-    <div id="base10-div">
-      <span>
-        <table id="base10-clock-face">
-          <tr>
-            <td class="clock-cell" id="clock-hours-0">0</td>
-            <td class="clock-cell" id="clock-hours-1">0</td>
-            <td>:</td>
-            <td class="clock-cell" id="clock-minutes-0">0</td>
-            <td class="clock-cell" id="clock-minutes-1">0</td>
-            <td>:</td>
-            <td class="clock-cell" id="clock-seconds-0">0</td>
-            <td class="clock-cell" id="clock-seconds-1">0</td>
-          </tr>
-        </table>
-      </span>
-    </div>
-    <div id="binary-div">
-      <span>
-        <table id="binary-clock-face">
-          <tr>
-            <td class="clock-cell" id="binary-clock-hours-0"></td>
-            <td class="clock-cell" id="binary-clock-hours-1"></td>
-            <td class="clock-cell" id="binary-clock-hours-2"></td>
-            <td class="clock-cell" id="binary-clock-hours-3"></td>
-            <td class="clock-cell" id="binary-clock-hours-4"></td>
-            <td>:</td>
-            <td class="clock-cell" id="binary-clock-minutes-0"></td>
-            <td class="clock-cell" id="binary-clock-minutes-1"></td>
-            <td class="clock-cell" id="binary-clock-minutes-2"></td>
-            <td class="clock-cell" id="binary-clock-minutes-3"></td>
-            <td class="clock-cell" id="binary-clock-minutes-4"></td>
-            <td class="clock-cell" id="binary-clock-minutes-5"></td>
-            <td>:</td>
-            <td class="clock-cell" id="binary-clock-seconds-0"></td>
-            <td class="clock-cell" id="binary-clock-seconds-1"></td>
-            <td class="clock-cell" id="binary-clock-seconds-2"></td>
-            <td class="clock-cell" id="binary-clock-seconds-3"></td>
-            <td class="clock-cell" id="binary-clock-seconds-4"></td>
-            <td class="clock-cell" id="binary-clock-seconds-5"></td>
-          </tr>
-        </table>
-      </span>
-    </div>
-    <div id="ternary-div">
-      <span>
-        <table id="ternary-clock-face">
-          <tr>
-            <td class="clock-cell" id="ternary-clock-hours-0"></td>
-            <td class="clock-cell" id="ternary-clock-hours-1"></td>
-            <td class="clock-cell" id="ternary-clock-hours-2"></td>
-            <td>:</td>
-            <td class="clock-cell" id="ternary-clock-minutes-0"></td>
-            <td class="clock-cell" id="ternary-clock-minutes-1"></td>
-            <td class="clock-cell" id="ternary-clock-minutes-2"></td>
-            <td class="clock-cell" id="ternary-clock-minutes-3"></td>
-            <td>:</td>
-            <td class="clock-cell" id="ternary-clock-seconds-0"></td>
-            <td class="clock-cell" id="ternary-clock-seconds-1"></td>
-            <td class="clock-cell" id="ternary-clock-seconds-2"></td>
-            <td class="clock-cell" id="ternary-clock-seconds-3"></td>
-          </tr>
-        </table>
-      </span>
-    </div>
-  </div>
 </body>
 
 <style>
@@ -189,8 +191,13 @@
   .clock-select {
     font-family: 'Playfair Display', serif;
   }
+
   .clock-faces {
     font-family: 'Major Mono Display', monospace;
+  }
+
+  .clock-face {
+    color: #ff0000;
   }
 </style>
 
