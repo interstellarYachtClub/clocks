@@ -73,16 +73,13 @@ footer p {
 }
 
 .aboutbar {
-  width: 80vw;
-  height: 100vh;
   background-color: rgba(30, 34, 44, .90);
-  padding: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: .25rem;
   transition: transform 0.5s ease-in-out;
   font-family: 'Playfair Display', serif;
-}
-
-.aboutbar p {
-  padding-bottom: 1.5rem;
+  position: absolute;
 }
 
 .aboutbar.closed {

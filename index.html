@@ -15,9 +15,9 @@
   <title>clocks</title>
 </head>
 
-<body>
+<body class="bg-[#1E222C]">
   <script src="app.js"></script>
-  <div class="clocks-app w-full h-full" x-data="{ isOpen: false }">
+  <div class="clocks-app w-full h-100vh relative overflow-hidden" x-data="{ isOpen: false }">
 
 
     <div class="w-full top-0 main-nav bg-[#1E222C] shadow-gray shadow-lg h-12 items-center sticky top-0">
@@ -28,22 +28,27 @@
         </ul>
       </div>
     </div>
-    <div class="aboutbar absolute top-0 left-0" :class="{ 'closed hidden': !isOpen }">
+    <div class="aboutbar absolute top-0 left-0 flex w-100vw flex-col h-full mt-12" :class="{ 'closed hidden': !isOpen }">
       <p class="text-[#EBF0F1] text-lg">
         I made this app as a way to better learn tailwind and css.
-        This page also uses alpineJS. For the select component and this sidebar.
+        This page also uses alpineJS for the select component and this sidebar.
       </p>
       <p class="text-[#EBF0F1] text-lg">
-        The main challenge I encountered was how to best display the clock for various formats. Inspired by the android clock on the pixel homescreen,
-        I found it best to combine flex and grid to stack when on narrow or mobile screens and then unstack to rows when on desktop.
+        The main challenge I encountered was how to best display the clock for various formats. Inspired by the android
+        clock on the pixel homescreen,
+        I found it best to combine flex and grid to stack when on narrow or mobile screens and then unstack to rows when
+        on desktop.
       </p>
-      <p class="text-[#EBF0F1] text-lg">To get the time, I used the built in JS Date() method and then extracted the hours, minutes, and seconds using .split.</p>
+      <p class="text-[#EBF0F1] text-lg">To get the time, I used the built in JS Date() method and then extracted the
+        hours, minutes, and seconds using .split.</p>
       <p class="text-[#EBF0F1] text-lg">
-        After getting the hours, I formatted them to binary and ternary using basic ifelse loops to match values from greatest to least units positions. I found it easiest, although crude, to perform long division to get the binary and ternary values.
+        After getting the hours, I formatted them to binary and ternary using basic ifelse loops to match values from
+        greatest to least units positions. I found it easiest, although crude, to perform long division to get the
+        binary and ternary values.
       </p>
     </div>
 
-    <div class="flex flex-col justify-center w-full h-48 bg-[#918D89]
+    <div class="flex flex-col justify-center w-full h-44 bg-[#918D89]
     text-center 
     font-normal 
     hero
@@ -184,62 +189,11 @@
       </div>
     </div>
 
-    <footer class="w-full bg-[#1E222C] h-10 sticky bottom-0 flex justify-center items-center">
+    <footer class="w-full bg-[#1E222C] h-10 absolute sticky bottom-0 flex justify-center items-center">
       <p class="text-center text-[#918D89]"> Made with 🕑 and love by <a class="no-underline font-semibold"
           href="https://github.com/interstellaryachtclub">Dave @ IYC</a> </p>
 
     </footer>
 </body>
-
-<style>
-  .clocks-app {
-    font-family: 'Major Mono Display', monospace;
-  }
-
-  .main-nav ul li {
-    font-family: 'Playfair Display', serif;
-  }
-
-  .hero h1 {
-    font-family: 'Major Mono Display', monospace;
-  }
-
-  .hero h2 {
-    font-family: 'Playfair Display', serif;
-  }
-
-  .clock-select {
-    font-family: 'Playfair Display', serif;
-  }
-
-  .clock-faces {
-    font-family: 'Major Mono Display', monospace;
-  }
-
-  .clock-face {
-    color: #ff0000;
-  }
-
-  footer p {
-    font-family: 'Playfair Display', serif;
-  }
-
-  .aboutbar {
-    width: 80vw;
-    height: 100vh;
-    background-color: rgba(30, 34, 44, .90);
-    padding: 2rem;
-    transition: transform 0.5s ease-in-out;
-    font-family: 'Playfair Display', serif;
-  }
-
-  .aboutbar p {
-    padding-bottom: 1.5rem;
-  }
-
-  .aboutbar.closed {
-    transform: translateX(-80vw);
-  }
-</style>
 
 </html>
