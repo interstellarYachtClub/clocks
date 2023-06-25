@@ -85,3 +85,7 @@ footer p {
 .aboutbar.closed {
   transform: translateX(-80vw);
 }
+
+.aboutbar p {
+  padding-bottom: .5rem;
+}
